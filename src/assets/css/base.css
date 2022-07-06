@@ -1,41 +1,14 @@
-<template>
-    <div class="win">
-        <biliHeaderVue/>
-        <biliLayoutVue/>
-    </div>
- 
-</template>
-
-<script>
-import biliHeaderVue from "./components/common/bili-header.vue";
-import biliLayoutVue from "./components/content/sec1/bili-layout.vue";
-export default {
-    components: {
-        biliHeaderVue,
-        biliLayoutVue
-    }
-}
-
-</script>
-
-<style>
-
+/* 把我们所有标签的内外边距清零 */
 * {
     margin: 0;
-    padding: 0;
-    border-radius: 8px;
-    box-sizing: border-box;
+    padding: 0
 }
-body {
-    height: 100%;
-    width: 100%;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.6;
-    overflow-x: auto;
-    background-color: #fff;
-    min-width: 1100px;
+/* em 和 i 斜体的文字不倾斜 */
+em,
+i {
+    font-style: normal
 }
+/* 去掉li 的小圆点 */
 li {
     list-style: none
 }
@@ -57,6 +30,7 @@ a {
     text-decoration: none
 }
 
+
 button,
 input {
     /* "\5B8B\4F53" 就是宋体的意思 这样浏览器兼容性比较好 */
@@ -71,4 +45,19 @@ body {
     color: #666
 }
 
-</style>
+.hide,
+.none {
+    display: none
+}
+/* 清除浮动 */
+.clearfix:after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0
+}
+
+.clearfix {
+    *zoom: 1
+}
