@@ -10,13 +10,14 @@
       <div class="promotion_head_right"></div>
     </div>
     <div class="promotion_content">
-        <div class="promotion_content_card">1</div>
-        <div class="promotion_content_card">2</div>
-        <div class="promotion_content_card">3</div>
-        <div class="promotion_content_card">4</div>
-        <div class="promotion_content_card">5</div>
-        <div class="promotion_content_card">6</div>
-        <div class="promotion_content_card">7</div>
+        <div v-for="item in 7" class="promotion_content_card">
+            <div class="promotion_content_card_img">
+                <a href="#"><img src="../sec1/img/ts2hrmljkaa.jpg" alt=""></a>
+            </div>
+            <div class="promotion_content_card_description">
+                <a href="#"><span>图片描述{{item}}</span></a>
+            </div>
+        </div>
     </div>
   </section>
 </template>
@@ -37,14 +38,18 @@ export default {};
     justify-content: space-between;
     align-items: center;
 }
-.promotion_head > img {
+.promotion_head>a>img {
     border: 2px solid rgb(207, 96, 5);
-    height: 100%;
+    width: 100%;
 }
-.promotion_head_left > span {
+.promotion_head_left > img {
+    width: 34px;
+    height: 34px;
+} 
+.promotion_head_left>a>span {
     font-size: 24px;
     font-weight: 400;
-    margin-left: 5px;
+    margin-left: 6px;
     color: black;
 }
 .promotion_content {
@@ -54,10 +59,26 @@ export default {};
     grid-gap: 20px;
 }
 .promotion_content_card {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: rgb(207, 96, 5);
 }
+.promotion_content_card_img {
+    flex: 2;
+    width: 100%;
+    height: 100%;
+}
+.promotion_content_card_img img {
+    width: 100%;
+    height: 100%;
+}
+.promotion_content_card_description {
+    flex: 1;
+    margin: 10px 20px 10px 0;
+    font-size: 15px;
+}
+
 /* -------------------- */
 @media (max-width: 1099.9px) {
     .area-header {

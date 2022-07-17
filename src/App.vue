@@ -29,12 +29,12 @@ export default {
 body {
     height: 100%;
     width: 100%;
+    min-width: 1100px !important;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6;
     overflow-x: auto;
     background-color: #fff;
-    min-width: 1100px;
 }
 li {
     list-style: none
