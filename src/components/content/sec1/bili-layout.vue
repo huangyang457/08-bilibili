@@ -23,14 +23,16 @@
       <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述0000</div></a>
     </section>
   </section>
-  <promotionVue>
+  <div v-for="i in 5" key="i">
+    <promotionVue>
     <template v-slot:logo_ico>
       <img src="../sec1/img/ts2hrmljkaa.jpg" alt="">
     </template>
     <template v-slot:headline>
-      推广
+      推广{{i}}
     </template>
   </promotionVue>
+  </div>
   </main>
 </template>
 

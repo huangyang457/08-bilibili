@@ -9,7 +9,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.8.3",
-    "element-plus": "^2.2.8",
+    "element-plus": "^2.2.9",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.37",
     "vue-router": "^4.0.3"
