@@ -2,25 +2,21 @@
   <main class="bili-layout">
     <section class="sec1">
     <section class="sec1_main">
+      <!-- --------轮播图------ -->
       <div href="#" class="sec1_main_swiper">
-        <swiperVue></swiperVue>
+        <swiperVue v-if="swiperControl"></swiperVue>
+        <swiperGetVue v-if="!swiperControl">
+          <el-carousel-item v-for="item in sec1MainSwiper" :key="item.id">
+            <a to="/page" class="swiper-img"><img style="width: 100%; height: 100%;" :src="item.address" alt=""></a>
+            <a to="/page" style="display: block; margin: 5px 100px 5px 15px;"><span text="2xl" justify="center">图片描述{{ item.title }}</span></a>
+          </el-carousel-item>
+        </swiperGetVue>
       </div>
-      <!-- -------使用端口数据---------- -->
-      <!-- <a href="#" class="sec1_main_item" v-for="(img, text) in axios.data">
-      <img :src="img" alt="">
-      <div>{{text}}</div>
-      </a> -->
-      <!-- ----------暂用-------- -->
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述1111</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述2222</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述3333</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述4444</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述5555</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述6666</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述7777</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述8888</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述9999</div></a>
-      <a href="#" class="sec1_main_item"><img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt=""><div class="sec1_main_item_describe">描述0000</div></a>
+      <!-- -------轮播图右侧---------- -->
+      <router-link to="/page" class="sec1_main_item" v-for="item in 10">
+      <img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt="">
+      <div>描述{{item}}</div>
+      </router-link>
     </section>
   </section>
   <div v-for="i in 5" key="i">
@@ -39,10 +35,32 @@
 <script>
 import promotionVue from '../sec2/promotion.vue';
 import swiperVue from './swiper.vue';
+import swiperGetVue from './swiperGet.vue';
+import { getSec1 } from '@/network/home'
 export default {
+  data() {
+    return {
+      sec1MainSwiper: [],
+      sec1_main_item: [],
+      sec2_promotion: [],
+      swiperControl: true
+    }
+  },
   components: {
     promotionVue,
-    swiperVue
+    swiperVue,
+    swiperGetVue
+  },
+  created() {
+    getSec1().then((res) => {
+      console.log(res.swiper);
+      this.sec1MainSwiper = res.swiper;
+      console.log(this.sec1MainSwiper);
+      this.swiperControl = false;
+    }).catch(() => {
+      console.log('error');
+      this.swiperControl = true;
+    })
   }
 };
 </script>

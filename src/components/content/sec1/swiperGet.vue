@@ -1,14 +1,20 @@
 <template>
-  <el-carousel :interval="3000" arrow="always" style="height: 100%;">
-    <el-carousel-item v-for="item in 4" :key="item">
-            <a href="#" class="swiper-img"><img style="width: 100%; object-fit: cover;" src="./img/ts2hrmljkaa.jpg" alt=""></a>
-            <a href="#" style="margin: 5px 100px 5px 15px;"><span text="2xl" justify="center">图片描述{{ item }}</span></a>
-    </el-carousel-item>
+  <el-carousel :interval="3000" arrow="always" style="height: 100%">
+    <slot></slot>
   </el-carousel>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    sec1MainSwiper: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  }
+};
 </script>
 
 <style>
@@ -23,8 +29,10 @@ export default {};
 }
 /* ----修改---- */
 .swiper-img {
-  height: 70%;
+  display: block;
+  height: 83%;
   width: 100%;
+  overflow: hidden;
 }
 .el-carousel__container {
   height: 100% !important;

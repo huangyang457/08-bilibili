@@ -12,10 +12,10 @@
     <div class="promotion_content">
         <div v-for="item in 7" class="promotion_content_card">
             <div class="promotion_content_card_img">
-                <a href="#"><img src="../sec1/img/ts2hrmljkaa.jpg" alt=""></a>
+                <router-link to="/page"><img src="../sec1/img/ts2hrmljkaa.jpg" alt=""></router-link>
             </div>
             <div class="promotion_content_card_description">
-                <a href="#"><span>图片描述{{item}}</span></a>
+                <router-link to="/page"><span>图片描述{{item}}</span></router-link>
             </div>
         </div>
     </div>

@@ -5,10 +5,10 @@
       <div class="bili-header__bar">
         <ul class="left-entry">
           <li class="fixbet">
-            <a href="#" style="color: #fff">
+            <router-link to="/#" style="color: #fff">
               <img class="bili-ico" src="./img/bili-ico.svg" alt="" />
               <span>首页</span>
-            </a>
+            </router-link>
           </li>
           <li>
             <a href="#"><span>番剧</span></a>
@@ -42,12 +42,13 @@
             <form id="nav-searchform">
               <div class="nav-search-content">
                 <input
+                  v-model="message"
                   class="nav-search-input"
                   type="search"
                   placeholder="推荐内容"
                 />
               </div>
-              <div class="nav-search-btn">
+              <div v-on:click="goToSearch" class="nav-search-btn">
                 <img class="search-ico" src="./img/search.svg" />
               </div>
             </form>
@@ -114,7 +115,7 @@
           </li>
         </ul>
       </div>
-      <div class="logo"><img src="./img/logo.png" /></div>
+      <div class="logo" v-on:click="linkToPage"><img src="./img/logo.png" /></div>
       <div class="taper-line"></div>
     </div>
     <div class="bili-header__channel">
@@ -178,10 +179,43 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      user: '最帅的那个',
+      message: ''
+    }
+  },
+  methods: {
+    linkToPage() {
+      this.$router.push('/#')
+    },
+    goToSearch() {
+      this.$router.push({
+        name: "search",
+        params: {
+          user: this.user
+        },query: {
+          message: this.message
+        }
+      })
+    },
+    profileClick(){
+        this.$router.push({
+          path: '/profile',
+          query: {
+            name: '最帅的那个',
+            age: '18',
+            height: '1.88cm'
+          }
+        })
+      }
+  }
+};
 </script>
 
 <style>
@@ -362,6 +396,7 @@ export default {};
   bottom: 10%;
   width: 162px;
   height: 78px;
+  cursor:pointer;
 }
 .logo > img {
   width: 100%;
