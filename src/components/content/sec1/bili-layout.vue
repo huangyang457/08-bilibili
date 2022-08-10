@@ -13,13 +13,13 @@
         </swiperGetVue>
       </div>
       <!-- -------轮播图右侧---------- -->
-      <router-link to="/page" class="sec1_main_item" v-for="item in 10">
+      <router-link to="/page" class="sec1_main_item" v-for="item in 10" :key="item">
       <img src="@/components/content/sec1/img/ts2hrmljkaa.jpg" alt="">
       <div>描述{{item}}</div>
       </router-link>
     </section>
   </section>
-  <div v-for="i in 5" key="i">
+  <div v-for="i in 5" :key="i">
     <promotionVue>
     <template v-slot:logo_ico>
       <img src="../sec1/img/ts2hrmljkaa.jpg" alt="">
@@ -58,7 +58,7 @@ export default {
       console.log(this.sec1MainSwiper);
       this.swiperControl = false;
     }).catch(() => {
-      console.log('error');
+      console.log("未连接到接口，使用备用数据");
       this.swiperControl = true;
     })
   }
