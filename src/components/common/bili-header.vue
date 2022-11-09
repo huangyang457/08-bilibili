@@ -42,11 +42,14 @@
             <form id="nav-searchform">
               <div class="nav-search-content">
                 <input
+                  @keyup.enter="goToSearch"
                   v-model="message"
                   class="nav-search-input"
                   type="search"
                   placeholder="推荐内容"
                 />
+                <!-- 当Form组件中只有一个Input组件时，鼠标聚焦输入框后，点击回车键，页面就会刷新。 -->
+                <input type="text" v-show="false">
               </div>
               <div v-on:click="goToSearch" class="nav-search-btn">
                 <img class="search-ico" src="./img/search.svg" />
